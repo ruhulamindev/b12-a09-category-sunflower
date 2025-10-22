@@ -1,14 +1,14 @@
 import React from 'react';
 import MyContainerLayout from '../Components/MyContainerLayout';
 
-const Signup = () => {
+const Signin = () => {
     return (
         <MyContainerLayout>
-        <div>
-            <h1>Signup page</h1>
-        </div>
+           <div>
+             <h1>Signin Page</h1>
+           </div>
         </MyContainerLayout>
     );
 };
 
-export default Signup;
+export default Signin;
