@@ -1,9 +1,11 @@
 import React from 'react';
+import HeroSwiper from '../Components/HeroSwiper';
 
 const Home = () => {
     return (
         <div>
-            <h1>Home</h1>
+            <HeroSwiper/>
+            <h1 className='text-center'>Main Content</h1>
         </div>
     );
 };
