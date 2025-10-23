@@ -1,6 +1,7 @@
 import React from "react";
 import MyContainerLayout from "../Components/MyContainerLayout";
 import { Link } from "react-router";
+import { FcGoogle } from "react-icons/fc";
 
 const Signin = () => {
   return (
@@ -54,6 +55,17 @@ const Signin = () => {
               Login
             </button>
           </form>
+          <div className="flex items-center my-4">
+            <hr className="flex-1 border-gray-300" />
+            <span className="mx-2 text-gray-500">OR</span>
+            <hr className="flex-1 border-gray-300" />
+          </div>
+
+          {/* google login button */}
+          <button className="w-full flex items-center justify-center border border-gray-300 py-2 rounded-lg hover:bg-gray-100 transition">
+            <FcGoogle className="mr-2 text-2xl" />
+            Sign in with Google
+          </button>
 
           {/* footer */}
           <p className="text-center text-sm mt-4">
