@@ -5,6 +5,7 @@ import ErrorPage from "../Pages/ErrorPage";
 import Signin from "../Pages/Signin";
 import Signup from "../Pages/Signup";
 import ServiceAll from "../Pages/ServiceAll";
+import SkillDetails from "../Pages/SkillDetails";
 
 
 export const router = createBrowserRouter([
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
         {
           path:"/services",
           element: <ServiceAll/>,
+        },
+        {
+          path:"/skills/:id",
+          element: <SkillDetails/>,
         },
         {
           path:"/Signup",

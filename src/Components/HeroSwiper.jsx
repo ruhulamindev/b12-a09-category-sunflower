@@ -31,7 +31,7 @@ const HeroSwiper = () => {
             className="w-full h-[350px] object-cover"
           />
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-white text-xl md:text-3xl lg:text-4xl font-semibold text-center px-4">
-            Welcome to A Local Skill Exchange Platform 🌻
+            Welcome to A Local Skill Exchange Platform🕺
           </div>
         </SwiperSlide>
 
@@ -42,7 +42,7 @@ const HeroSwiper = () => {
             className="w-full h-[350px] object-cover"
           />
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-white text-xl md:text-3xl lg:text-4xl font-semibold text-center px-4">
-            Welcome to A Local Skill Exchange Platform 🌻
+            Welcome to A Local Skill Exchange Platform🕺
           </div>
         </SwiperSlide>
 
@@ -53,7 +53,7 @@ const HeroSwiper = () => {
             className="w-full h-[350px] object-cover"
           />
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-white text-xl md:text-3xl lg:text-4xl font-semibold text-center px-4">
-            Welcome to A Local Skill Exchange Platform 🌻
+            Welcome to A Local Skill Exchange Platform🕺
           </div>
         </SwiperSlide>
       </Swiper>

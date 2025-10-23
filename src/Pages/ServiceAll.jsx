@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import SkillCard from './../Components/SkillCard';
-import { Link } from 'react-router';
+import SkillCard from "./../Components/SkillCard";
+import { Link } from "react-router";
 
 const ServiceAll = () => {
   const [skills, setSkills] = useState([]);
@@ -19,7 +19,7 @@ const ServiceAll = () => {
           <SkillCard key={skill.skillId} skill={skill} />
         ))}
       </div>
-            <div className="text-center mt-8">
+      <div className="text-center mt-8">
         <Link to="/">
           <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
             Back to Home

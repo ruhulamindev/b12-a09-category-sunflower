@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <HeroSwiper />
-      <h2 className="text-3xl font-bold text-center mb-6">Popular Skills</h2>
+      <h2 className="text-3xl font-bold text-center mb-6 mt-8">Popular Skills</h2>
 
       <div className="grid md:grid-cols-3 gap-6">
         {skills.map((skill) => (
