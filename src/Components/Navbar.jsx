@@ -8,7 +8,7 @@ const Navbar = () => {
       <MyContainerLayout className="flex justify-between items-center">
         {/* nav left side (logo) */}
         <div>
-          <Link className="text-2xl md:text-3xl font-bold">Sunflower</Link>
+          <Link className="text-2xl md:text-3xl font-bold">SkillSwap</Link>
         </div>
         {/* middle-nav-link Home */}
         <ul>

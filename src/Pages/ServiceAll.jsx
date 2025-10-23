@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Profile = () => {
+const ServiceAll = () => {
     return (
         <div>
-            <h1>profile</h1>
+            
         </div>
     );
 };
 
-export default Profile;
+export default ServiceAll;

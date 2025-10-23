@@ -9,14 +9,14 @@ const Footer = () => {
         <MyContainerLayout className="flex flex-col md:flex-row gap-9 md:justify-between items-start">
           <nav className="grid grid-col-1">
             <h6 className="footer-title">Contact info</h6>
-            <a className="link link-hover">info@sunflower.com</a>
+            <a className="link link-hover">info@skillswap.com</a>
             <a className="link link-hover">+880 123 ### ###</a>
             <a className="link link-hover">Dhaka, Bangladesh</a>
           </nav>
           <nav className="grid grid-col-1">
-            <h6 className="footer-title">Quick Link</h6>
+            <h6 className="footer-title">Quick Links</h6>
+            <Link className="link link-hover">Home</Link>
             <Link className="link link-hover">privacy policy</Link>
-            <Link className="link link-hover">About Us</Link>
             <Link className="link link-hover">Terms of Service</Link>
           </nav>
           <nav>
@@ -64,7 +64,7 @@ const Footer = () => {
         </MyContainerLayout>
       </footer>
       <div className="text-center mt-4 mb-4 text-gray-600">
-        © {new Date().getFullYear()} Sunflower. All rights reserved.
+        © {new Date().getFullYear()} skillswap. All rights reserved.
       </div>
     </div>
   );
