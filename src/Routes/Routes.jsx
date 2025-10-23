@@ -4,6 +4,7 @@ import MainLayout from "../Layouts/MainLayout";
 import ErrorPage from "../Pages/ErrorPage";
 import Signin from "../Pages/Signin";
 import Signup from "../Pages/Signup";
+import ServiceAll from "../Pages/ServiceAll";
 
 
 export const router = createBrowserRouter([
@@ -15,6 +16,10 @@ export const router = createBrowserRouter([
         {
           index:true,
           element: <Home/>,
+        },
+        {
+          path:"/services",
+          element: <ServiceAll/>,
         },
         {
           path:"/Signup",

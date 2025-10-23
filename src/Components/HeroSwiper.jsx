@@ -26,7 +26,7 @@ const HeroSwiper = () => {
       >
         <SwiperSlide>
           <img
-            src="/ui/img-1.jpg"
+            src="/img-1.jpg"
             alt="Slide 1"
             className="w-full h-[350px] object-cover"
           />
@@ -37,7 +37,7 @@ const HeroSwiper = () => {
 
         <SwiperSlide>
           <img
-            src="/ui/img-2.jpg"
+            src="/img-2.jpg"
             alt="Slide 2"
             className="w-full h-[350px] object-cover"
           />
@@ -48,7 +48,7 @@ const HeroSwiper = () => {
 
         <SwiperSlide>
           <img
-            src="/ui/img-3.png"
+            src="/img-3.png"
             alt="Slide 3"
             className="w-full h-[350px] object-cover"
           />
