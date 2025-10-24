@@ -1,85 +1,157 @@
-import React from "react";
+import React, { useState } from "react";
 import MyContainerLayout from "../Components/MyContainerLayout";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
-import { auth } from "../Utils/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { FaEye } from "react-icons/fa";
+import { IoEyeOff } from "react-icons/io5";
+import { useAuth } from "../Contexts/useAuth";
 
 const Signup = () => {
-  const handleSignup = (e) => {
+  const { signupUser } = useAuth();
+  const [show, setShow] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const redirectTo = location.state?.from?.pathname || "/";
+
+  const handleSignup = async (e) => {
     e.preventDefault();
+    const fullName = e.target.fullName?.value;
     const email = e.target.email?.value;
+    const photoURL = e.target.photoURL?.value;
     const password = e.target.password?.value;
 
-    if (password.length < 6){
+    
+    if (!fullName) {
+      toast.error("Please enter your full name");
+      return;
+    }
+    if (!email.includes("@")) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
+    
+    if (!email) {
+      toast.error("Please enter your email");
+      return;
+    }
+    if (!photoURL) {
+      toast.error("Please provide a photo URL");
+      return;
+    }
+    
+    if (!password) {
+      toast.error("Please enter your password");
+      return;
+    }
+
+    if (password.length < 6) {
       toast.error("Password should be at least 6 digit");
       return;
     }
-     
-    createUserWithEmailAndPassword (auth, email, password)
-      .then((res) => {
-        console.log(res);
-        toast.success("Signup successfully!");
-      })
-      .catch((e) => {
-        console.log(e);
-        toast.error(e.message);
-      });
+    
+    if (!/[A-Z]/.test(password)) {
+      toast.error("Password must contain at least one uppercase letter");
+      return;
+    }
+    if (!/[a-z]/.test(password)) {
+      toast.error("Password must contain at least one lowercase letter");
+      return;
+    }
+    if (!email.includes("@")) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
+    await signupUser(email, password, fullName, photoURL);
+    navigate(redirectTo, { replace: true });
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-linear-to-r from-green-200 via-blue-200 to-purple-300">
+    <div className="min-h-md flex items-center justify-center bg-linear-to-r from-green-200 via-blue-200 to-purple-300 p-6">
       <MyContainerLayout>
-        <div className="w-full mx-auto max-w-5xl bg-white/70 backdrop-blur-md rounded-xl shadow-lg grid md:grid-cols-2 gap-8 p-8">
-          {/* left section */}
-          <div className="flex flex-col justify-center">
-            <h1 className="text-4xl font-bold text-gray-800 mb-2">
-              Join Us Today
-            </h1>
-            <p className="text-gray-600 text-lg">
-              Create your account and start exploring amazing features.
-            </p>
-          </div>
-
-          {/* right section (form) */}
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <h2 className="text-2xl font-semibold text-center mb-6 text-gray-700">
-              Sign Up
-            </h2>
-            <form onSubmit={handleSignup} className="space-y-4">
+        {/* autofill fixed korar jonno */}
+        <style>
+          {`
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus,
+      input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+        -webkit-text-fill-color: #000 !important;
+      }
+    `}
+        </style>
+        <div className="w-full mx-auto max-w-md bg-white p-8 rounded-xl shadow-lg">
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+            Sign Up
+          </h2>
+          <form onSubmit={handleSignup} className="space-y-4">
+            {/* Full Name */}
+            <div>
+              <label className="block mb-1 text-gray-600 font-medium">
+                Full Name
+              </label>
               <input
                 type="text"
                 name="fullName"
-                placeholder="Full Name"
-                className="input input-bordered w-full"
+                placeholder="Enter your full name"
+                className="input input-bordered w-full bg-white focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
+            </div>
+
+            {/* Email */}
+            <div>
+              <label className="block mb-1 text-gray-600 font-medium">
+                Email
+              </label>
               <input
                 type="email"
                 name="email"
-                placeholder="Email"
-                className="input input-bordered w-full"
+                placeholder="Enter your email"
+                className="input input-bordered w-full bg-white focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
+            </div>
+
+            {/* Photo URL */}
+            <div>
+              <label className="block mb-1 text-gray-600 font-medium">
+                Photo URL
+              </label>
               <input
                 type="text"
                 name="photoURL"
-                placeholder="Photo URL"
-                className="input input-bordered w-full"
+                placeholder="Enter photo URL"
+                className="input input-bordered w-full bg-white focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
+            </div>
+
+            {/* Password */}
+            <div className="relative">
+              <label className="block mb-1 text-gray-600 font-medium">
+                Password
+              </label>
               <input
-                type="password"
+                type={show ? "text" : "password"}
                 name="password"
-                placeholder="Password"
-                className="input input-bordered w-full"
+                placeholder="Enter password"
+                className="input input-bordered w-full bg-white focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
-              <button className="btn btn-primary w-full">Register</button>
-            </form>
-            <p className="text-center text-gray-600 mt-4">
-              Already have an account?{" "}
-              <Link to="/Signin" className="text-blue-600 hover:underline">
-                Sign in
-              </Link>
-            </p>
-          </div>
+              <span
+                onClick={() => setShow(!show)}
+                className="absolute right-3 top-1/2 transform translate-y-2 cursor-pointer text-gray-600 z-10 bg-white w-7"
+              >
+                {show ? <FaEye /> : <IoEyeOff />}
+              </span>
+            </div>
+
+            <button className="btn btn-primary w-full">Sign Up</button>
+          </form>
+
+          <p className="text-center text-gray-600 mt-4">
+            Already have an account?{" "}
+            <Link to="/Signin" className="text-blue-600 hover:underline">
+              Sign in
+            </Link>
+          </p>
         </div>
       </MyContainerLayout>
     </div>

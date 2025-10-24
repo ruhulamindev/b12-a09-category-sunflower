@@ -1,15 +1,23 @@
 import React from "react";
 import { Navigate, useLocation } from "react-router";
-import {useAuth} from "../Contexts/AuthContext"
+import  {useAuth}  from "../Contexts/useAuth";
 
 const ProtectedRoute = ({ children }) => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const location = useLocation();
 
-  if (!user) {
-    return <Navigate to="signin" state={{ from: location }} replace />;
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <p className="text-lg font-semibold text-gray-600">Loading...</p>
+      </div>
+    );
   }
-  return <>{children}</>;
+  if (!user) {
+    return <Navigate to="/Signin" state={{ from: location }} replace />;
+  }
+
+  return children;
 };
 
 export default ProtectedRoute;

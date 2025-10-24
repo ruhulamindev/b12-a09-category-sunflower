@@ -28,7 +28,7 @@ const SkillDetails = () => {
       <img
         src={skill.image}
         alt={skill.skillName}
-  className="rounded-xl h-auto object-cover mb-6 mx-auto md:mx-0"
+        className="rounded-xl h-auto object-cover mb-6 mx-auto md:mx-0"
       />
       <h2 className="text-3xl font-bold">{skill.skillName}</h2>
       <p className="text-gray-700 mt-2">{skill.description}</p>
