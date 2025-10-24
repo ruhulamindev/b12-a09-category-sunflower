@@ -27,7 +27,7 @@ const SkillCard = ({ skill }) => {
       <p className="font-semibold">Price: ${price}</p>
       <button
         onClick={handleViewDetails}
-        className="mt-3 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+        className="mt-3 bg-green-600 cursor-pointer text-white px-4 py-2 rounded hover:bg-green-700"
       >
         View Details
       </button>

@@ -14,8 +14,8 @@ const Profile = () => {
   };
 
   return (
-    <div className="bg-linear-to-r from-blue-50 via-blue-100 to-blue-200 min-h-screen flex flex-col items-center justify-center p-6">
-      <div className="bg-linear-to-r from-green-200 via-blue-200 to-purple-300 shadow-md rounded-xl p-6 w-full max-w-md">
+    <div className="bg-gradient-to-r from-blue-50 via-blue-100 to-blue-200 min-h-screen flex flex-col items-center justify-center p-6">
+      <div className="bg-gradient-to-r from-green-200 via-blue-200 to-purple-300 shadow-md rounded-xl p-6 w-full max-w-md">
         <h1 className="text-2xl font-bold mb-4 text-center">My Profile</h1>
 
         <div className="flex flex-col items-center mb-4">

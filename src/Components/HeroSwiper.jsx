@@ -11,11 +11,12 @@ import { motion } from "framer-motion";
 const HeroSwiper = () => {
   return (
     <MyContainerLayout>
-      <div className="bg-amber-300 flex flex-col md:flex-row items-center gap-6 border p-2">
+      <div className="bg-amber-300 flex flex-col md:flex-row items-center gap-6 border p-3">
         {/* left */}
         <motion.div
           initial={{ x: -100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ amount: 0.3 }}
           transition={{ duration: 0.8 }}
           className="md:w-1/2 text-center md:text-left"
         >
@@ -29,7 +30,8 @@ const HeroSwiper = () => {
         {/* right */}
         <motion.div
           initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ amount: 0.3 }}
           transition={{ duration: 0.8 }}
           className="md:w-1/2 w-full"
         >

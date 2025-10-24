@@ -46,7 +46,7 @@ const Signin = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-linear-to-r from-indigo-300 via-purple-200 to-pink-300 p-6">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-300 via-purple-200 to-pink-300 p-6">
       <MyContainerLayout>
         {/* autofill fixed korar jonno */}
         <style>

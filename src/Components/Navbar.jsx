@@ -10,6 +10,7 @@ const Navbar = () => {
   const { user, logout } = useAuth();
   const Navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showName, setShowName] = useState(false);
 
   const handleLogout = async () => {
     await logout();
@@ -45,13 +46,22 @@ const Navbar = () => {
             <>
               {/* desktop profile & signout */}
               <div className="hidden md:flex items-center gap-4">
-                <img
-                  src={
-                    user.photoURL || "https://i.ibb.co/ZYW3VTp/brown-brim.png"
-                  }
-                  alt="avatar"
-                  className="w-10 h-10 rounded-full border"
-                />
+                <div className="relative flex flex-col items-center">
+                  <img
+                    src={
+                      user.photoURL || "https://i.ibb.co/ZYW3VTp/brown-brim.png"
+                    }
+                    alt="avatar"
+                    onMouseEnter={() => setShowName(true)}
+                    onMouseLeave={() => setShowName(false)}
+                    className="w-10 h-10 rounded-full border cursor-pointer"
+                  />
+                  {showName && (
+                    <span className="absolute -top-4 bg-gray-800 text-white text-xs px-2 py-1 rounded shadow-md whitespace-nowrap">
+                      {user.displayName || "User Name"}
+                    </span>
+                  )}
+                </div>
                 <button
                   onClick={handleLogout}
                   className="btn btn-outline btn-sm border-red-500 text-red-500"
@@ -118,7 +128,6 @@ const Navbar = () => {
                         handleLogout();
                         setMenuOpen(false);
                       }}
-                      
                       className="text-red-500 text-center border border-red-500 py-2"
                     >
                       Sign Out
@@ -177,7 +186,7 @@ const Navbar = () => {
                         onClick={() => setMenuOpen(false)}
                       />
                     </div>
-                                    <NavLink
+                    <NavLink
                       to="/"
                       onClick={() => setMenuOpen(false)}
                       className={({ isActive }) =>

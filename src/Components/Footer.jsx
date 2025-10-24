@@ -1,6 +1,7 @@
 import React from "react";
 import MyContainerLayout from "./MyContainerLayout";
 import { Link } from "react-router";
+import Home from './../Pages/Home';
 
 const Footer = () => {
   return (
@@ -15,7 +16,7 @@ const Footer = () => {
           </nav>
           <nav className="grid grid-col-1">
             <h6 className="footer-title">Quick Links</h6>
-            <Link className="link link-hover">Home</Link>
+            <Link className="link link-hover">Support</Link>
             <Link className="link link-hover">privacy policy</Link>
             <Link className="link link-hover">Terms of Service</Link>
           </nav>
