@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 const Signin = () => {
   const { signinUser, googleSignin } = useAuth();
   const [show, setShow] = useState(false);
+  const [email, setEmail] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
   const redirectTo = location.state?.from || "/";
@@ -75,6 +76,7 @@ const Signin = () => {
               <input
                 type="email"
                 name="email"
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
                 className="input input-bordered w-full focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
@@ -101,6 +103,7 @@ const Signin = () => {
             <div className="text-right">
               <Link
                 to="/forget-password"
+                state={{ email }}
                 className="text-sm text-purple-600 hover:underline"
               >
                 Forget Password?
