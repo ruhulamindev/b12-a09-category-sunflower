@@ -19,7 +19,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="fixed top-0 left-0 w-full bg-base-100 shadow-sm z-50">
       <MyContainerLayout className="flex justify-between items-center py-3 px-3 relative">
         {/* logo */}
         <Link className="text-2xl md:text-3xl font-bold">SkillSwap</Link>
