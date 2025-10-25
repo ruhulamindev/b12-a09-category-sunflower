@@ -3,6 +3,7 @@ import HeroSwiper from "../Components/HeroSwiper";
 import { Link } from "react-router";
 import SkillCard from "../Components/SkillCard";
 import AboutPage from "../Components/AboutPage";
+import "animate.css";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 
@@ -59,7 +60,15 @@ const Home = () => {
 
       <div className="text-center mt-8 mb-8">
         <Link to="/services">
-          <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+          <button
+            className="bg-blue-600 cursor-pointer text-white px-6 py-2 rounded hover:bg-blue-700 transition animate__animated"
+            onMouseEnter={(e) =>
+              e.currentTarget.classList.add("animate__bounce")
+            }
+            onAnimationEnd={(e) =>
+              e.currentTarget.classList.remove("animate__bounce")
+            }
+          >
             Show All
           </button>
         </Link>

@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import MyContainerLayout from "../Components/MyContainerLayout";
 import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
+import { FcGoogle } from "react-icons/fc";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOff } from "react-icons/io5";
 import { useAuth } from "../Contexts/useAuth";
 
 const Signup = () => {
-  const { signupUser } = useAuth();
+  const { signupUser, googleSignin } = useAuth();
   const [show, setShow] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -25,15 +26,16 @@ const Signup = () => {
       toast.error("Please enter your full name");
       return;
     }
+    if (!email) {
+      toast.error("Please enter your email");
+      return;
+    }
+    
     if (!email.includes("@")) {
       toast.error("Please enter a valid email address");
       return;
     }
     
-    if (!email) {
-      toast.error("Please enter your email");
-      return;
-    }
     if (!photoURL) {
       toast.error("Please provide a photo URL");
       return;
@@ -64,6 +66,15 @@ const Signup = () => {
     await signupUser(email, password, fullName, photoURL);
     navigate(redirectTo, { replace: true });
   };
+  
+    const handleGoogleSignin = async () => {
+      try {
+        await googleSignin();
+        navigate(redirectTo, { replace: true });
+      } catch (error) {
+        toast.error(error.message);
+      }
+    };
 
   return (
     <div className="min-h-md flex items-center justify-center bg-gradient-to-r from-green-200 via-blue-200 to-purple-300 p-6">
@@ -145,6 +156,21 @@ const Signup = () => {
 
             <button className="btn btn-primary w-full">Sign Up</button>
           </form>
+           <div className="flex items-center my-4">
+            <hr className="flex-1 border-gray-300" />
+            <span className="mx-2 text-gray-500">OR</span>
+            <hr className="flex-1 border-gray-300" />
+          </div>
+
+          {/* google signup button */}
+          <button
+            type="button"
+            onClick={handleGoogleSignin}
+            className="w-full flex items-center justify-center border border-gray-300 py-2 rounded-lg hover:bg-gray-100 transition cursor-pointer"
+          >
+            <FcGoogle className="mr-2 text-2xl" />
+            Sign in with Google
+          </button>
 
           <p className="text-center text-gray-600 mt-4">
             Already have an account?{" "}

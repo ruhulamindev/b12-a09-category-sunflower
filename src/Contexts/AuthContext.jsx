@@ -91,22 +91,21 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider
-      value={{
-        user,
-        loading,
-        signupUser,
-        signinUser,
-        googleSignin,
-        logout,
-        updateUserProfile,
-        resetPassword,
-      }}
-    >
-      {" "}
-      {children}
-    </AuthContext.Provider>
-  );
+  <AuthContext.Provider
+    value={{
+      user,
+      loading,
+      signupUser,
+      signinUser,
+      googleSignin,
+      logout,
+      updateUserProfile,
+      resetPassword,
+    }}
+  >
+    {!loading && children}
+  </AuthContext.Provider>
+);
 };
 
 export default AuthContext;

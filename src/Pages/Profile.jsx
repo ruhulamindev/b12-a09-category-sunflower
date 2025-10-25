@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import { useAuth } from "../Contexts/useAuth";
+{/* eslint-disable-next-line no-unused-vars */}
+import { useSpring, animated } from "@react-spring/web";
 
 const Profile = () => {
   const { user, updateUserProfile } = useAuth();
   const [editing, setEditing] = useState(false);
   const [displayName, setDisplayName] = useState(user?.displayName || "");
   const [photoURL, setPhotoURL] = useState(user?.photoURL || "");
+
+  const animation = useSpring({
+    opacity: editing ? 1 : 0,
+    transform: editing ? `scale(1)` : `scale(0.8)`,
+    config: { tension: 200, friction: 20 },
+  });
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -30,47 +38,60 @@ const Profile = () => {
           <p className="text-gray-600">{user?.email}</p>
         </div>
 
-        {!editing ? (
+        {!editing && (
           <button
             onClick={() => setEditing(true)}
             className="btn btn-primary w-full"
           >
             Update Profile
           </button>
-        ) : (
-          <form onSubmit={handleUpdate} className="space-y-4">
-            <div>
-              <label className="block text-gray-700">Display Name</label>
-              <input
-                type="text"
-                value={displayName}
-                onChange={(e) => setDisplayName(e.target.value)}
-                className="input input-bordered w-full"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700">Photo URL</label>
-              <input
-                type="text"
-                value={photoURL}
-                onChange={(e) => setPhotoURL(e.target.value)}
-                className="input input-bordered w-full"
-              />
-            </div>
+        )}
 
-            <div className="flex gap-2">
-              <button type="submit" className="btn btn-success flex-1">
-                Save
-              </button>
-              <button
-                type="button"
-                onClick={() => setEditing(false)}
-                className="btn btn-outline flex-1"
-              >
-                Cancel
-              </button>
+        {editing && (
+          <animated.div
+            style={animation}
+            className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+          >
+            <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-md">
+              <h2 className="text-xl font-bold mb-4 text-center">
+                Update Profile
+              </h2>
+
+              <form onSubmit={handleUpdate} className="space-y-4">
+                <div>
+                  <label className="block text-gray-700">Display Name</label>
+                  <input
+                    type="text"
+                    value={displayName}
+                    onChange={(e) => setDisplayName(e.target.value)}
+                    className="input input-bordered w-full"
+                  />
+                </div>
+                <div>
+                  <label className="block text-gray-700">Photo URL</label>
+                  <input
+                    type="text"
+                    value={photoURL}
+                    onChange={(e) => setPhotoURL(e.target.value)}
+                    className="input input-bordered w-full"
+                  />
+                </div>
+
+                <div className="flex gap-2">
+                  <button type="submit" className="btn btn-success flex-1">
+                    Save
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setEditing(false)}
+                    className="btn btn-outline flex-1"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
             </div>
-          </form>
+          </animated.div>
         )}
       </div>
     </div>

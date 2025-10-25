@@ -1,6 +1,6 @@
 import { sendPasswordResetEmail } from "firebase/auth";
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import { useLocation, Link } from "react-router";
 import { auth } from "../Utils/firebase";
 import { toast } from "react-toastify";
 import MyContainerLayout from "../Components/MyContainerLayout";
@@ -59,6 +59,14 @@ const ForgotPassword = () => {
               Reset Password
             </button>
           </form>
+          <div className="mt-4 text-center">
+            <Link
+              to="/signin"
+              className="text-red-500 hover:underline font-medium"
+            >
+              Back to Login
+            </Link>
+          </div>
         </div>
       </MyContainerLayout>
     </div>
