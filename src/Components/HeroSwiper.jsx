@@ -10,8 +10,7 @@ import { motion } from "framer-motion";
 
 const HeroSwiper = () => {
   return (
-    <MyContainerLayout>
-      <div className="bg-amber-300 flex flex-col md:flex-row items-center gap-6 border p-3">
+      <div className="bg-amber-300 flex flex-col md:flex-row items-center gap-6 border p-3 overflow-hidden">
         {/* left */}
         <motion.div
           initial={{ x: -100, opacity: 0 }}
@@ -76,7 +75,6 @@ const HeroSwiper = () => {
           </Swiper>
         </motion.div>
       </div>
-    </MyContainerLayout>
   );
 };
 

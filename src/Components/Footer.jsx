@@ -6,8 +6,8 @@ import Home from './../Pages/Home';
 const Footer = () => {
   return (
     <div className="bg-base-300">
-      <footer className="footer sm:footer-horizontal bg-base-300 text-base-content p-10">
-        <MyContainerLayout className="flex flex-col md:flex-row gap-9 md:justify-between items-start">
+      <footer className="footer sm:footer-horizontal bg-base-300 text-base-content px-4 py-8">
+        <MyContainerLayout className="flex flex-col md:flex-row gap-9 md:justify-between">
           <nav className="grid grid-col-1">
             <h6 className="footer-title">Contact info</h6>
             <a className="link link-hover">info@skillswap.com</a>
@@ -64,7 +64,7 @@ const Footer = () => {
           </nav>
         </MyContainerLayout>
       </footer>
-      <div className="text-center mt-4 mb-4 text-gray-600">
+      <div className="text-center mt-3 mb-5 text-gray-600">
         © {new Date().getFullYear()} skillswap. All rights reserved.
       </div>
     </div>

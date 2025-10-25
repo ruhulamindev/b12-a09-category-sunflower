@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SkillCard from "./../Components/SkillCard";
 import { Link } from "react-router";
+import MyContainerLayout from "../Components/MyContainerLayout";
 
 const ServiceAll = () => {
   const [skills, setSkills] = useState([]);
@@ -12,7 +13,7 @@ const ServiceAll = () => {
   }, []);
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <MyContainerLayout className="mx-auto px-4 py-8 overflow-hidden">
       <h2 className="text-3xl font-bold text-center mb-6">All Skills</h2>
       <div className="grid md:grid-cols-3 gap-6">
         {skills.map((skill) => (
@@ -26,7 +27,7 @@ const ServiceAll = () => {
           </button>
         </Link>
       </div>
-    </div>
+    </MyContainerLayout>
   );
 };
 

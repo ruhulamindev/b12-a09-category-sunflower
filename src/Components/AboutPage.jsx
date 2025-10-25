@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+import MyContainerLayout from "./MyContainerLayout";
 
 const AboutPage = () => {
-    return (
-    <div className="min-h-screen bg-gray-50">
+  return (
+    <div className="min-h-md bg-gray-50">
       {/* hero */}
       <section
         className="flex flex-col items-center justify-center text-center py-20 px-6 md:px-20 rounded"
@@ -29,12 +30,14 @@ const AboutPage = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-white text-lg md:text-xl max-w-3xl"
         >
-          SkillSwap is a local skill exchange platform where people can learn, share, and grow their talents. Our mission is to connect individuals and foster a community of continuous learning.
+          SkillSwap is a local skill exchange platform where people can learn,
+          share, and grow their talents. Our mission is to connect individuals
+          and foster a community of continuous learning.
         </motion.p>
       </section>
 
       {/* mission */}
-      <section className="py-20 px-6 md:px-20 flex flex-col md:flex-row gap-10 bg-white">
+      <section className="py-20 px-6 md:px-10 flex flex-col md:flex-row gap-10 bg-white">
         {/* mission */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -44,7 +47,8 @@ const AboutPage = () => {
         >
           <h2 className="text-2xl font-bold mb-3">Our Mission</h2>
           <p>
-            To empower local talents by providing a platform to learn, share, and collaborate on new skills.
+            To empower local talents by providing a platform to learn, share,
+            and collaborate on new skills.
           </p>
         </motion.div>
 
@@ -57,7 +61,8 @@ const AboutPage = () => {
         >
           <h2 className="text-2xl font-bold mb-3">Our Vision</h2>
           <p>
-            To create a thriving community where skill-sharing breaks barriers and opens opportunities for everyone.
+            To create a thriving community where skill-sharing breaks barriers
+            and opens opportunities for everyone.
           </p>
         </motion.div>
 
@@ -74,8 +79,20 @@ const AboutPage = () => {
           </p>
         </motion.div>
       </section>
+      {/* join us */}
+      <section className="rounded py-16 text-center bg-gradient-to-r from-indigo-500 to-blue-600 text-white">
+        <h2 className="text-3xl font-bold mb-4">
+          Join the SkillSwap Community
+        </h2>
+        <p className="max-w-2xl mx-auto mb-6">
+          Start learning and sharing your skills<br/> with people around you today.
+        </p>
+        <button className="bg-white text-blue-700 font-semibold px-6 py-2 rounded shadow hover:bg-gray-100 transition">
+          Get Started
+        </button>
+      </section>
     </div>
-    );
+  );
 };
 
 export default AboutPage;
